@@ -5,7 +5,6 @@
 import dataFiles
 import pandas as pd
 from datetime import time
-from matplotlib import pyplot as plt
 
 
 #Create keys for each time block and store the count for each.
@@ -77,6 +76,7 @@ for dataframes in listOfMonths:
 
 #If this is script then execute and display the data.
 if(__name__ == "__main__"):
+    from matplotlib import pyplot as plt
     plt.bar(timeOfDayCounts.keys(),timeOfDayCounts.values())
     plt.show()
         
