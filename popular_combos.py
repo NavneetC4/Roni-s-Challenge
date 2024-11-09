@@ -2,11 +2,6 @@ import dataFiles as df
 import pandas as pd
 import matplotlib.pyplot as plt
 october = df.octoberCSV
-mac_cheese = []
-desert = []
-party_tray = []
-mix = []
-sandwhich = []
 mac_cheese = (october.loc[october["Parent Menu Selection"]=="Mac and Cheese"])
 desert = (october.loc[october["Parent Menu Selection"]=="Sides/Desserts"])
 mix = (october.loc[october["Parent Menu Selection"]=="MIX"])
@@ -82,6 +77,5 @@ def mac_che(mac):
     plt.tight_layout()
     plt.show()
 
-
-    
 mac_che(mac_cheese)
+    
