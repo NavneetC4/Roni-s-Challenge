@@ -5,6 +5,8 @@ import dataFiles as df
 from popular_combos import *
 import comboFinder
 import bussinessDuringDay  
+import subprocess
+
 
 # Define color variables
 background_color = "#0f1117"
@@ -113,12 +115,18 @@ st.title("6 Month Overview Dashboard")
 # Sidebar for month selection including "Overview"
 month = st.sidebar.selectbox("Select Month", ["Overview", "April", "August", "July", "June", "May", "October", "September"])
 
+
 # Display Popular Combos when "Overview" is selected
 if month == "Overview":
+    sidebar = st.button("Open Overall Trend Dashboard")
+    if sidebar:
+        st.write("Launching Enhanced Interactive Dashboard...")
+        subprocess.Popen(["streamlit", "run", "streamlit_dashboard.py"])
     st.subheader("Traffic Over the Course of a Day")
     plot_traffic()
     st.subheader("Popular Combos")
     show_PopularCombos()
+    
 
 else:
     # Load data for selected month
