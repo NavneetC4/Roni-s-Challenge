@@ -1,7 +1,11 @@
+<<<<<<< Updated upstream
+=======
 import dataFiles
 import bussinessDuringDay
 import popular_combos
 from matplotlib import pyplot as plt
+
+
 
 def main():
     choice = ""
@@ -27,10 +31,8 @@ def main():
 def plot_traffic():
     plt.close('all')  # Close all existing plot windows
     fig, ax = plt.subplots()
-    ax.bar(bussinessDuringDay.timeOfDayCounts.keys(), bussinessDuringDay.timeOfDayCounts.values(), width = .3)
+    ax.bar(bussinessDuringDay.timeOfDayCounts.keys(), bussinessDuringDay.timeOfDayCounts.values())
     ax.set_title('Traffic Over the Course of a Day')
-    ax.set_xlabel("Times by hours")
-    ax.set_ylabel("Number of Customers")
     plt.show()
 
 def plot_popular_combos():
@@ -38,7 +40,8 @@ def plot_popular_combos():
     fig, axs = plt.subplots(2, 4, figsize=(15, 10))
     plt.subplots_adjust(wspace=0.25, hspace=0.75)
     
-    cheese_counts, meat_counts, drizzle_counts, noods_counts, sides_count, topping_count, drink_count = popular_combos.mac_che()
+    cheese_counts, meat_counts, drizzle_counts, noods_counts, sides_count, topping_count, drink_count, bought_per_week = popular_combos.mac_che()
+    
     
     cheese_counts.plot(kind='bar', ax=axs[0, 0], color='skyblue')
     axs[0, 0].set_title('Cheese Distribution in Mac and Cheese')
@@ -48,6 +51,10 @@ def plot_popular_combos():
 
     drizzle_counts.plot(kind='bar', ax=axs[0, 2], color='grey')
     axs[0, 2].set_title('Drizzle Distribution in Mac and Cheese')
+
+    bought_per_week.plot(kind='bar', ax=axs[0, 3], color='pink')
+    axs[0, 3].set_title('Mac n Cheese Bought Per Day')
+    axs[0, 3].set_xticklabels(axs[0, 3].get_xticklabels(), rotation=90)
 
     noods_counts.plot(kind='bar', ax=axs[1, 0], color='yellow')
     axs[1, 0].set_title('Noodle Distribution in Mac and Cheese')
@@ -70,3 +77,4 @@ def plot_popular_combos():
 
 if __name__ == "__main__":
     main()
+>>>>>>> Stashed changes

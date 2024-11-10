@@ -28,11 +28,44 @@ def find_month(month):
         csv_value = df.septemberCSV
     return csv_value
 
+
+# october = df.octoberCSV
+# mac_cheese = (october.loc[october["Parent Menu Selection"]=="Mac and Cheese"])
+# desert = (october.loc[october["Parent Menu Selection"]=="Sides/Desserts"])
+# mix = (october.loc[october["Parent Menu Selection"]=="MIX"])
+# party_tray = (october.loc[october["Parent Menu Selection"]=="Mac and Cheese Party Tray (Plus FREE Garlic Bread)"])
+# sandwhich  = (october.loc[october["Parent Menu Selection"]=="Grilled Cheese Sandwich"])
+
+
+def count_mac_and_cheese_per_week(month):
+    time = find_month(month)
+    # Filter the dataframe to only include Mac and Cheese orders
+    mac = time.loc[time["Parent Menu Selection"] == "Mac and Cheese"].copy()
+
+
+    # Extract the date part from 'Order ID'
+    mac['Day'] = mac['Order ID'].str.split('-').str[0].astype(int)
+
+    # Calculate the week number (1-5) based on the day of the month
+    mac['Week'] = ((mac['Day'] - 1) // 7) + 1
+
+    # Count the number of orders per week
+    orders_per_week = mac['Week'].value_counts().sort_index()
+
+    # Reindex to ensure all 5 weeks are represented (even if some have 0 orders)
+    orders_per_week = orders_per_week.reindex(range(1, 6), fill_value=0)
+
+    return orders_per_week
+
+   
+
+
+
+
 def mac_che(month):
     time = find_month(month)
 
     mac= (time.loc[time["Parent Menu Selection"]=="Mac and Cheese"])
-
     cheeses = (mac.loc[mac["Option Group Name"]=="Choose Your Cheese"])
     cheese_counts =  cheeses['Modifier'].value_counts()
     
