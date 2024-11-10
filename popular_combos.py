@@ -31,6 +31,7 @@ def mac_che():
     drink = (mac.loc[mac["Option Group Name"]=="Choose Your Drink"])
     drink_count =  drink['Modifier'].value_counts()
     return(cheese_counts,meat_counts,drizzle_counts,noods_counts,sides_count,topping_count,drink_count)
+
     # fig, axes = plt.subplots(nrows=2, ncols=4, figsize=(15, 4))
     # plt.subplots_adjust(wspace= .25, hspace= .75)
     # cheese_counts.plot(kind='bar', ax=axes[0][0], color='skyblue')
