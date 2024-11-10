@@ -50,18 +50,28 @@ def load_data(month):
 
 # Function to show Popular Combos
 def show_PopularCombos():
-    plt.close('all')  # Close all existing plot windows
+    plt.close('all')
+    # Create the figure and axes
     fig, axs = plt.subplots()
-    combo_df = comboFinder.comboDF.reset_index()
+    # Set the background color of the figure and axes
+    fig.patch.set_facecolor(background_color)
+    axs.set_facecolor(background_color)
+    # Assuming comboFinder.combo_df is your DataFrame, reset index and rename columns
+    combo_df = comboFinder.combo_df.reset_index()
     combo_df.columns = ['Modifiers', 'Counts']
-
+   # Extract data for the x and y axes
     comboDfx = combo_df["Modifiers"]
     comboDfy = combo_df["Counts"]
-
-    # Adjust the size as needed
+    # Create the bar chart with styling
     axs.bar(comboDfx, comboDfy, color='skyblue', edgecolor='black')
-    
-    plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better readability
+    # Set the x and y axis labels
+    axs.set_xlabel("Modifiers", color=text_color)
+    axs.set_ylabel("Counts", color=text_color)
+    # Adjust tick parameters (color of the ticks)
+    axs.tick_params(colors=text_color)
+    # Rotate the x-axis labels for better readability
+    plt.xticks(rotation=45, ha='right')
+    # Show the plot in Streamlit
     st.pyplot(fig)
 
 # Set up Streamlit dashboard
