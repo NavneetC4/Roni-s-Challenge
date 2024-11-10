@@ -3,7 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import dataFiles as df
 from popular_combos import *
-import comboFinder  
+import comboFinder
+import bussinessDuringDay  
 
 # Define color variables
 background_color = "#0f1117"
@@ -50,7 +51,7 @@ def load_data(month):
 
 # Function to show Popular Combos
 def show_PopularCombos():
-    plt.close('all')
+  
     # Create the figure and axes
     fig, axs = plt.subplots()
     # Set the background color of the figure and axes
@@ -74,16 +75,47 @@ def show_PopularCombos():
     # Show the plot in Streamlit
     st.pyplot(fig)
 
+def plot_traffic():
+    # Define white text color
+    text_color = 'white'
+
+    # Create the figure and axis
+    fig, ax = plt.subplots()
+
+    # Set the background color of the figure and axes
+    fig.patch.set_facecolor(background_color)
+    ax.set_facecolor(background_color)
+
+    # Set the tick parameters (color of ticks)
+    ax.tick_params(colors=text_color)
+
+    # Create the bar chart
+    ax.bar(bussinessDuringDay.timeOfDayCounts.keys(), bussinessDuringDay.timeOfDayCounts.values(),width= .15)
+
+    # Set the title with white text color
+    ax.set_title('Traffic Over the Course of a Day', color=text_color)
+
+    # Set the x and y labels with white text color (if needed)
+    ax.set_xlabel('Time of Day', color=text_color)
+    ax.set_ylabel('Count', color=text_color)
+
+    # Display the plot in Streamlit
+    st.pyplot(fig)
+
+
 # Set up Streamlit dashboard
-st.title("Monthly Menu Dashboard")
+st.title("6 Month Overview Dashboard")
 
 # Sidebar for month selection including "Overview"
 month = st.sidebar.selectbox("Select Month", ["Overview", "April", "August", "July", "June", "May", "October", "September"])
 
 # Display Popular Combos when "Overview" is selected
 if month == "Overview":
+    st.subheader("Traffic Over the Course of a Day")
+    plot_traffic()
     st.subheader("Popular Combos")
     show_PopularCombos()
+
 else:
     # Load data for selected month
     data = load_data(month)
