@@ -1,0 +1,26 @@
+/* assets/styles.css */
+
+body {
+    background-color: #1c1c1c !important;
+    color: #ffffff !important;
+}
+
+.card {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: none;
+}
+
+.form-label {
+    color: #ffffff;
+}
+
+.dropdown-menu.show {
+    background-color: #2b2b2b;
+}
+
+.navbar, .navbar-inverse {
+    background-color: #1c1c1c;
+    border-color: #1c1c1c;
+}
+
