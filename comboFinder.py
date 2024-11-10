@@ -1,8 +1,6 @@
 # import dataFiles
 # import pandas as pd
 
-<<<<<<< Updated upstream
-=======
 
 # listOfMonths = [dataFiles.aprilCSV,dataFiles.mayCSV,dataFiles.juneCSV,dataFiles.julyCSV,dataFiles.augustCSV,dataFiles.septemberCSV,dataFiles.octoberCSV]
 
@@ -53,4 +51,3 @@
 
 
 
->>>>>>> Stashed changes
