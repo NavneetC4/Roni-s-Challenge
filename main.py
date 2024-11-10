@@ -1,18 +1,21 @@
-<<<<<<< Updated upstream
-=======
 import dataFiles
 import bussinessDuringDay
 import popular_combos
 from matplotlib import pyplot as plt
 
-
+month = "june"
 
 def main():
     choice = ""
+    
     while choice.lower() != "stop":
         print("Select a plot to display or type Stop:")
         print("1. Traffic Over the Course of a Day")
-        print("2. Popular Combos")
+        print("2. Popular Mac and Cheese Components")
+        print("3. Popular Dessert Components")
+        print("4. Popular Cheese Mix Components")
+        print("5. Popular Party Tray Components")
+        print("6. Popular Sandwich Components")
         print("0. Exit")
 
         choice = input("Enter your choice by its number: ")
@@ -20,7 +23,15 @@ def main():
         if choice == '1':
             plot_traffic()
         elif choice == '2':
-            plot_popular_combos()
+            plot_popular_combos_mac_and_cheese()
+        elif choice == '3':
+            plot_popular_combos_desert()
+        elif choice == "4":
+            plot_popular_combos_mix()
+        elif choice == "5":
+            plot_popular_combos_party_tray()
+        elif choice == "6":
+            plot_popular_combos_sandwich()
         elif choice == '0':
             print("Exiting...")
             plt.close('all')
@@ -35,12 +46,12 @@ def plot_traffic():
     ax.set_title('Traffic Over the Course of a Day')
     plt.show()
 
-def plot_popular_combos():
+def plot_popular_combos_mac_and_cheese():
     plt.close('all')  # Close all existing plot windows
     fig, axs = plt.subplots(2, 4, figsize=(15, 10))
     plt.subplots_adjust(wspace=0.25, hspace=0.75)
     
-    cheese_counts, meat_counts, drizzle_counts, noods_counts, sides_count, topping_count, drink_count, bought_per_week = popular_combos.mac_che()
+    cheese_counts, meat_counts, drizzle_counts, noods_counts, sides_count, topping_count, drink_count, bought_per_week = popular_combos.mac_che(month)
     
     
     cheese_counts.plot(kind='bar', ax=axs[0, 0], color='skyblue')
@@ -75,6 +86,116 @@ def plot_popular_combos():
 
     plt.show()
 
+def plot_popular_combos_desert():
+    plt.close('all')  # Close all existing plot windows
+    fig, axs = plt.subplots(1, 2, figsize=(15, 10))
+    plt.subplots_adjust(wspace=0.25, hspace=0.75)
+    
+    side_count, bought_per_week = popular_combos.desert(month)
+    
+    
+    side_count.plot(kind='bar', ax=axs[0], color='skyblue')
+    axs[0].set_title('Sides Distribution in sides/dessert')
+
+    bought_per_week.plot(kind='bar', ax=axs[1], color='salmon')
+    axs[1].set_title('Sides/Desserts bough in a day')
+
+    
+
+    # Annotate the bars with the counts
+    for ax in axs.flatten():
+        for container in ax.containers:
+            ax.bar_label(container)
+
+    plt.show()
+
+def plot_popular_combos_mix():
+    plt.close('all')  # Close all existing plot windows
+    fig, axs = plt.subplots(1, 2, figsize=(15, 10))
+    plt.subplots_adjust(wspace=0.25, hspace=0.75)
+    
+    side_count, bought_per_week = popular_combos.mix(month)
+    
+    
+    side_count.plot(kind='bar', ax=axs[0], color='skyblue')
+    axs[0].set_title('Cheese Distribution in cheese mix')
+
+    bought_per_week.plot(kind='bar', ax=axs[1], color='salmon')
+    axs[1].set_title('Cheeses mixed in a day')
+
+    
+
+    # Annotate the bars with the counts
+    for ax in axs.flatten():
+        for container in ax.containers:
+            ax.bar_label(container)
+
+    plt.show()
+
+def plot_popular_combos_party_tray():
+    plt.close('all')  # Close all existing plot windows
+    fig, axs = plt.subplots(1, 2, figsize=(15, 10))
+    plt.subplots_adjust(wspace=0.25, hspace=0.75)
+    
+    side_count, bought_per_week = popular_combos.party_tray(month)
+    
+    
+    side_count.plot(kind='bar', ax=axs[0], color='skyblue')
+    axs[0].set_title('Cheese Distribution in cheese mix')
+
+    bought_per_week.plot(kind='bar', ax=axs[1], color='salmon')
+    axs[1].set_title('Cheeses mixed in a day')
+
+    
+
+    # Annotate the bars with the counts
+    for ax in axs.flatten():
+        for container in ax.containers:
+            ax.bar_label(container)
+
+    plt.show()
+
+def plot_popular_combos_sandwich():
+    plt.close('all')  # Close all existing plot windows
+    fig, axs = plt.subplots(2, 4, figsize=(15, 10))
+    plt.subplots_adjust(wspace=0.25, hspace=0.75)
+    
+    cheese_counts,mac_count,meat_counts,drizzle_counts,sides_count,topping_count,drink_count, bought_per_week = popular_combos.sandwitch(month)
+    
+    
+    cheese_counts.plot(kind='bar', ax=axs[0, 0], color='skyblue')
+    axs[0, 0].set_title('Melter Cheese Distribution in Sandwich')
+
+    meat_counts.plot(kind='bar', ax=axs[0, 1], color='salmon')
+    axs[0, 1].set_title('Meat Distribution in Sandwich')
+
+    drizzle_counts.plot(kind='bar', ax=axs[0, 2], color='grey')
+    axs[0, 2].set_title('Drizzle Distribution in Sandwich')
+
+    bought_per_week.plot(kind='bar', ax=axs[0, 3], color='pink')
+    axs[0, 3].set_title('Sandwich Bought Per Week')
+    axs[0, 3].set_xticklabels(axs[0, 3].get_xticklabels(), rotation=90)
+
+    mac_count.plot(kind='bar', ax=axs[1, 0], color='yellow')
+    axs[1, 0].set_title('Mac in Cheese in Sandwich Distribution')
+
+    sides_count.plot(kind='bar', ax=axs[1, 1], color='green')
+    axs[1, 1].set_title('Sides Distribution with Sandwich')
+
+    drink_count.plot(kind='bar', ax=axs[1, 2], color='pink')
+    axs[1, 2].set_title('Drink Distribution with Sanwich')
+
+    topping_count.plot(kind='bar', ax=axs[1, 3], color='purple')
+    axs[1, 3].set_title('Topping Distribution with Sandwich')
+
+    
+
+    # Annotate the bars with the counts
+    for ax in axs.flatten():
+        for container in ax.containers:
+            ax.bar_label(container)
+
+    plt.show()
 if __name__ == "__main__":
+    month = input("Which month should I display information for:")
     main()
->>>>>>> Stashed changes
