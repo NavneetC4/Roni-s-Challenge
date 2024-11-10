@@ -34,11 +34,20 @@ for index, row in combined_df.iterrows():
         except:
             continue
 
-    # Convert dictionary to DataFrame
+#Delete to improve performance
+del list_of_months
+
+# Convert dictionary to DataFrame
 dict_to_df = pd.DataFrame(data_dict)
+
+#Delete to improve performance
+del data_dict
 
     # Count the occurrences of each combination of userModifiers
 count_df = dict_to_df["userModifiers"].value_counts()
+
+#Delete to improve performance
+del dict_to_df
 
     # Get the top 10 combinations that contain commas
 combo_df = count_df[count_df.index.str.contains(",")].iloc[0:10]
