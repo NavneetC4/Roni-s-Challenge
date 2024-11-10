@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import dataFiles
 import bussinessDuringDay
 import popular_combos
@@ -77,4 +75,3 @@ def plot_popular_combos():
 
 if __name__ == "__main__":
     main()
->>>>>>> Stashed changes
