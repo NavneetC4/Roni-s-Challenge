@@ -35,7 +35,7 @@ dictToDf = pd.DataFrame(dict)
 countDf = dictToDf["userModifiers"].value_counts()
 #Get only those elemetns with commas in them to find the top combos
 comboDF = countDf[countDf.index.str.contains(",")].iloc[0:10]
-print(comboDF)
+
 
 
 
