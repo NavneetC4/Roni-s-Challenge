@@ -9,15 +9,15 @@ dict = {
     "userModifiers":[]
 }
 
+combined_df = pd.concat(listOfMonths, ignore_index=True)
 #Define outside here so its not being aletered
 extractUserID = ""
 
-for dataframes in listOfMonths:
-    extractMonth = id(dataframes)
-    for index,rows in dataframes.iterrows():
+
+    
+for index,rows in combined_df.iterrows():
         try:
-            extractUserID = rows["Order ID"] +"_" + f"{extractMonth}"
-            
+            extractUserID = rows["Order ID"] +"_" + rows["Sent Date"][5:7]
             # Use the user id as the key, then the value is a dictionary that stores the a string with the user's modifiers
             # the second value is the count
             
@@ -32,15 +32,10 @@ for dataframes in listOfMonths:
     
 
 dictToDf = pd.DataFrame(dict)
-
 countDf = dictToDf["userModifiers"].value_counts()
-print(countDf)
-
 #Get only those elemetns with commas in them to find the top combos
 comboDF = countDf[countDf.index.str.contains(",")].iloc[0:10]
-
-
-
+print(comboDF)
 
 
 
