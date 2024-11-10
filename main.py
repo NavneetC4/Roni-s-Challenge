@@ -27,8 +27,10 @@ def main():
 def plot_traffic():
     plt.close('all')  # Close all existing plot windows
     fig, ax = plt.subplots()
-    ax.bar(bussinessDuringDay.timeOfDayCounts.keys(), bussinessDuringDay.timeOfDayCounts.values())
+    ax.bar(bussinessDuringDay.timeOfDayCounts.keys(), bussinessDuringDay.timeOfDayCounts.values(), width = .3)
     ax.set_title('Traffic Over the Course of a Day')
+    ax.set_xlabel("Times by hours")
+    ax.set_ylabel("Number of Customers")
     plt.show()
 
 def plot_popular_combos():
