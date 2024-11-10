@@ -106,7 +106,7 @@ def mix(month):
 def party_tray(month):
     time = find_month(month)
     tray = (time.loc[time["Parent Menu Selection"]=="Mac and Cheese Party Tray (Plus FREE Garlic Bread)"])
-
+    tray = tray[tray["Modifier"] != "I DO NOT NEED UTENSILS (Save waste!)"]
     party_count = tray['Modifier'].value_counts()
     return party_count,count_mac_and_cheese_per_week(tray)
 def sandwitch(month):
