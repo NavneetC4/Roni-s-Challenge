@@ -89,15 +89,19 @@ def plot_traffic():
     # Set the tick parameters (color of ticks)
     ax.tick_params(colors=text_color)
 
-    # Create the bar chart
-    ax.bar(bussinessDuringDay.timeOfDayCounts.keys(), bussinessDuringDay.timeOfDayCounts.values(),width= .15)
+    # Create the bar chart with default width
+    ax.bar(bussinessDuringDay.timeOfDayCounts.keys(), bussinessDuringDay.timeOfDayCounts.values())
 
     # Set the title with white text color
     ax.set_title('Traffic Over the Course of a Day', color=text_color)
 
-    # Set the x and y labels with white text color (if needed)
+    # Set the x and y labels with white text color
     ax.set_xlabel('Time of Day', color=text_color)
     ax.set_ylabel('Count', color=text_color)
+
+    # Adjust x-axis tick positions to create more space
+    ax.set_xticks(range(len(bussinessDuringDay.timeOfDayCounts.keys())))
+    ax.set_xticklabels(bussinessDuringDay.timeOfDayCounts.keys(), rotation=45, ha='right')
 
     # Display the plot in Streamlit
     st.pyplot(fig)
