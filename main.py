@@ -30,7 +30,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Your Streamlit code for dashboard goes here
+
 def load_data(month):
     # Fetch various data based on the month
     mac_data = mac_che(month)
